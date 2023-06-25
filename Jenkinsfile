@@ -5,8 +5,14 @@ pipeline {
                 steps {
                     script {
                     //checkout scm
-                    withDockerRegistry([credentialsId:'DockerCreds', url: 'https://hub.docker.com/'])
                     docker.build("ajaykumar77/learnings77:${env.BUILD_ID}")
+                }
+            }
+        }
+        stage('Push Docker image to HUB') {
+            steps {
+                script {
+                    withDockerRegistry([credentialsId:'DockerCreds', url: 'https://hub.docker.com/'])
                     docker.image("ajaykumar77/learnings77:${env.BUILD_ID}").push()
                 }
             }
