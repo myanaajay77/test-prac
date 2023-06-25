@@ -12,7 +12,7 @@ pipeline {
         stage('Push Docker image to HUB') {
             steps {
                 script {
-                    withDockerRegistry([credentialsId:'DockerCreds', url: 'https://hub.docker.com/'])
+                    withDockerRegistry([credentialsId:'DockerCreds'])
                     docker.image("ajaykumar77/learnings77:${env.BUILD_ID}").push()
                 }
             }
