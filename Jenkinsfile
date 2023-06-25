@@ -6,7 +6,7 @@ pipeline {
                     script{
                     //checkout scm
                     docker.build("ajaykumar77/learnings77:${env.BUILD_ID}")
-                    docker.push()
+                    docker.image("ajaykumar77/learnings77:${env.BUILD_ID}").push()
                 }
             }
         }
